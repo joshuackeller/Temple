@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Appointment>
+
+<h3>Sign Up Page</h3>
+<div>Select a time slot you would like to reserve.</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var a in Model)
+        {
+        <tr>
+            <td>@a.AppointmentId</td>
+            <td>@a.Date.ToString("dddd, MMMM d")</td>
+            <td>@a.Date.ToString("h:mm")</td>
+            <td class="btn btn-sm btn-success">Reserve</td>
+        </tr>
+        }
+    </tbody>
+</table>
