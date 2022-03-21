@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Temple.Models
 {
-    //Test
+    
     public class Appointment
     {
 
