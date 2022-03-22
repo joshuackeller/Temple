@@ -39,6 +39,21 @@ namespace Temple.Controllers
             var appointment = context.Appointment.Single(x => x.AppointmentId == id);
             return View("Appointment", appointment);
         }
+        [HttpPost]
+        public IActionResult Edit(Appointment apt)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Update(apt);
+                context.SaveChanges();
+
+                return RedirectToAction("ViewAppointments");
+            }
+            else
+            {
+                return View(apt);
+            }
+        }
         [HttpGet]
         public IActionResult Delete(int id)
         {
