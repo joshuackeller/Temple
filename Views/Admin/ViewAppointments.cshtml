@@ -1,12 +1,12 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
+    ViewData["Title"] = "View Appointments";
 }
+@model List<Appointment>
 
 <div class="bg-info text-white p-2 d-flex justify-content-between align-items-center">
     <a class="nav-link text-white" asp-controller="Admin" asp-action="ViewAppointments">
-         <h4 style="margin-top: 5px;">
+        <h4 style="margin-top: 5px;">
             Admin
         </h4>
     </a>
@@ -16,6 +16,36 @@
         </div>
     </div>
 </div>
+
+<table class="table table-sm table-striped table-hover" table-bordered>
+    <thead>
+        <tr>
+            <th colspan="5" class="text-center">Appointments</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Appointment a in Model)
+        {
+        <tr>
+            <td>@a.AppointmentId</td>
+            <td>@a.GroupName</td>
+            <td>@a.GroupSize</td>
+            <td>@a.Available</td>
+
+            <td>
+                <NavLink class="btn btn-warning btn-sm" href="/admin/Appointment.cshtml">Edit</NavLink>
+            </td>
+            @*<td>
+                <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveBook(b))">Delete</button>
+            </td>*@
+
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+
 
 <div>
     <div>For viewing all apointments along with edit and delete buttons</div>
