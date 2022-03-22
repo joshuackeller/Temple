@@ -19,7 +19,6 @@ namespace Temple.Controllers
             repo = temp;
         }
 
-       
 
         public IActionResult Index()
         {
