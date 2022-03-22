@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Temple.Models;
@@ -31,9 +32,34 @@ namespace Temple.Controllers
 
             return View(blah);
         }
-        //public async Task UpdateData()
-        //{
-        //    AppointmentData =  context.Appointment.ToListAsync();
-        //}
+   
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var appointment = context.Appointment.Single(x => x.AppointmentId == id);
+            return View("Appointment", appointment);
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var appointment = context.Appointment.Single(x => x.AppointmentId == id);
+
+            return View(appointment);
+        }
+        [HttpPost]
+        public IActionResult Delete(Appointment apt)
+        {
+            context.Appointment.Remove(apt);
+            context.SaveChanges();
+            return RedirectToAction("ViewAppointments");
+        }
+        [HttpPost]
+        public IActionResult Save()
+        {
+            context.SaveChanges();
+            return View("ViewAppointments");
+        }
+
+
     }
 }
