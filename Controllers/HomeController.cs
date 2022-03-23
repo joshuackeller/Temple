@@ -19,7 +19,14 @@ namespace Temple.Controllers
             repo = temp;
         }
 
-       
+        private readonly ILogger<HomeController> _logger;
+        private AppointmentContext blahContext { get; set; }
+
+        public HomeController(ILogger<HomeController> logger, AppointmentContext someName)
+        {
+            _logger = logger;
+            blahContext = someName;
+        }
 
         public IActionResult Index()
         {
@@ -41,5 +48,20 @@ namespace Temple.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public IActionResult ReservationForm()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ReservationForm(Appointment app)
+        {
+            blahContext.Add(app);
+            blahContext.SaveChanges();
+            return View("Index", app);
+        }
+     
     }
 }
