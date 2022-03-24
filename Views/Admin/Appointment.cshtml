@@ -25,10 +25,10 @@
         <label asp-for="Date">Date: @Model.Date </label>
         <input class="form-control" type="hidden" />
     </div>
-    @*<div class="form-group">
-        <label asp-for="Available">Available:</label>
-        <input asp-for="Available" class="form-control" />
-    </div>*@
+    <div class="form-group">
+        
+        <input asp-for="Available" type="hidden" value="@false" class="form-control" />
+    </div>
     <div class="form-group">
         <label asp-for="GroupName">Group Name: </label>
         <input asp-for="GroupName" class="form-control" />
