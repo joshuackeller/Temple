@@ -31,8 +31,13 @@ namespace Temple
 
             services.AddDbContext<AppointmentContext>(options =>
             {
-                options.UseSqlite(Configuration.GetConnectionString("AppointmentConnection"));
+                options.UseSqlite(Configuration["ConnectionStrings:AppointmentConnection"]);
             });
+
+            //services.AddDbContext<AppointmentContext>(options =>
+            //{
+            //    options.UseSqlite(Configuration.GetConnectionString("AppointmentConnection"));
+            //});
 
             services.AddScoped<IAppointmentRepository, EFAppointmentRepository>();
 
