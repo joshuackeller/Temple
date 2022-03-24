@@ -29,6 +29,7 @@ namespace Temple.Models
 
         public void SaveAppointment(Appointment a)
         {
+            context.Update(a);
             context.SaveChanges();
         }
 
